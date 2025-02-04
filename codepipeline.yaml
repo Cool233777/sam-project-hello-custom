@@ -43,6 +43,7 @@ Resources:
       ArtifactStore:
         Type: S3
         Location: sam-app-hello-custom-artifacts
+      RestartExecutionOnUpdate: true
       Stages:
         - Name: Source
           Actions:
@@ -60,22 +61,6 @@ Resources:
                 Branch: "main"
                 OAuthToken: "{{resolve:secretsmanager:TokenDeMiGit}}"
               RunOrder: 1
-        - Name: Build
-          Actions:
-            - Name: CodeBuild
-              ActionTypeId:
-                Category: Build
-                Owner: AWS
-                Provider: CodeBuild
-                Version: "1"
-              InputArtifacts:
-                - Name: SourceOutput
-              OutputArtifacts:
-                - Name: BuildOutput
-              Configuration:
-                ProjectName: "sam-app-hello-custom-build"
-              RunOrder: 1
-
         - Name: Deploy
           Actions:
             - Name: CodeDeploy
@@ -87,8 +72,9 @@ Resources:
               InputArtifacts:
                 - Name: BuildOutput
               Configuration:
-                ApplicationName: "sam-app-hello-custom-deploy"
-                DeploymentGroupName: "MiGrupoDeDespliegue"
+                 StackName: sam-app-hello-custom-stack  # El nombre del stack de CloudFormation
+                 Capabilities: CAPABILITY_IAM  # Si tu plantilla crea roles o permisos
+                 TemplatePath: BuildArtifact::.aws-sam/build/template.yaml  
               RunOrder: 1
 
 

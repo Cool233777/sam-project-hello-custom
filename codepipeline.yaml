@@ -39,7 +39,7 @@ Resources:
     Type: AWS::CodePipeline::Pipeline
     Properties:
       Name: "MyGitHubPipeline"
-      RoleArn: !GetAtt CodePipelineExecutionRole.Arn
+      RoleArn: !GetAtt CodePipelineRole.Arn
       ArtifactStore:
         Type: S3
         Location: sam-app-hello-custom-artifacts
@@ -62,18 +62,19 @@ Resources:
               RunOrder: 1
 
 
-CodePipelineExecutionRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Action:
-              - "sts:AssumeRole"
-            Effect: Allow
-            Principal:
-              Service:
-                - codepipeline.amazonaws.com
+  CodePipelineRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: CodePipelineExecutionRole
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: 
+                  - codepipeline.amazonaws.com
+              Action: 
+                - "sts:AssumeRole"
         Policies:
           - PolicyName: CodePipelinePolicy
             PolicyDocument:
@@ -85,8 +86,8 @@ CodePipelineExecutionRole:
                     - "s3:PutObject"
                     - "s3:ListBucket"
                   Resource: 
-                    - "arn:aws:s3:::my-artifact-bucket"
-                    - "arn:aws:s3:::my-artifact-bucket/*"
+                    - "arn:aws:s3:::sam-app-hello-custom-artifacts"
+                    - "arn:aws:s3:::sam-app-hello-custom-artifacts/*"
                 - Effect: Allow
                   Action:
                     - "codebuild:StartBuild"

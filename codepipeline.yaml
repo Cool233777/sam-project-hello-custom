@@ -144,7 +144,7 @@ Resources:
         Type: LINUX_CONTAINER
       Source:
         Type: CODEPIPELINE
-        BuildSpec: buildspec_feature.yml
+        BuildSpec: buildspec.yml
 
   CodeBuildRole:
     Type: AWS::IAM::Role

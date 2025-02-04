@@ -139,6 +139,39 @@ Resources:
                     - "iam:PassRole"
                   Resource: "*"
 
+  TestingArtifactBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: sam-app-hello-custom-artifacts-tests
+
+  TestingPipelineExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: MyPipelineExecutionRoleCustom
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - codepipeline.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
+
+  TestingCloudFormationExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: MyCloudFormationExecutionRoleCustom
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - cloudformation.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
+
 
 
   CodeBuildProject:

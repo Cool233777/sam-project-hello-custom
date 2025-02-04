@@ -135,7 +135,7 @@ Resources:
     Type: AWS::CodeBuild::Project
     Properties:
       Name: "sam-app-hello-custom-build"
-      ServiceRole: !GetAtt CodePipelineRole.Arn
+      ServiceRole: !GetAtt CodeBuildRole.Arn
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -145,3 +145,39 @@ Resources:
       Source:
         Type: CODEPIPELINE
         BuildSpec: buildspec_feature.yml
+
+  CodeBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: CodeBuildExecutionRole-Custom
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - codebuild.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
+      Policies:
+        - PolicyName: CodeBuildPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "s3:GetObject"
+                  - "s3:PutObject"
+                  - "s3:GetBucketLocation"
+                Resource: !Sub "arn:aws:s3:::sam-app-hello-custom-artifacts/*"
+              - Effect: Allow
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - "codebuild:StartBuild"
+                  - "codebuild:BatchGetBuilds"
+                Resource: "*"

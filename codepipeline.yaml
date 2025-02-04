@@ -95,7 +95,6 @@ Resources:
                 EnvironmentVariables: !Sub |
                   [
                     {"name": "ENV_TEMPLATE", "value": "packaged-test.yaml"},
-                    {"name": "SAM_TEMPLATE", "value": "template.yaml"},
                     {"name": "ENV_REGION", "value": "${TestingRegion}"},
                     {"name": "ENV_STACK_NAME", "value": "${TestingStackName}"},
                     {"name": "ENV_PIPELINE_EXECUTION_ROLE", "value": "${TestingPipelineExecutionRole}"},

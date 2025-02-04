@@ -102,7 +102,6 @@ Resources:
                     {"name": "ENV_CLOUDFORMATION_EXECUTION_ROLE", "value": "${TestingCloudFormationExecutionRole}"},
                     {"name": "ENV_BUCKET", "value": "${TestingArtifactBucket}"}
                   ]
-                RoleArn: !GetAtt CodeBuildRole.Arn
               RunOrder: 1
 
 

@@ -48,17 +48,6 @@ Parameters:
               Service:
                 - codebuild.amazonaws.com
       Policies:
-        # - PolicyName: CodeBuildLogs
-        #   PolicyDocument:
-        #     Version: "2012-10-17"
-        #     Statement:
-        #       - Effect: Allow
-        #         Action:
-        #           - "logs:CreateLogGroup"
-        #           - "logs:CreateLogStream"
-        #           - "logs:PutLogEvents"
-        #         Resource:
-        #           - !Sub "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*"
         - PolicyName: CodeBuildArtifactsBucket
           PolicyDocument:
             Version: "2012-10-17"

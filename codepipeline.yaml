@@ -135,7 +135,7 @@ Resources:
     Type: AWS::CodeBuild::Project
     Properties:
       Name: "sam-app-hello-custom-build"
-      ServiceRole: !GetAtt CodeBuildRole.Arn
+      ServiceRole: !GetAtt CodePipelineRole.Arn
       Artifacts:
         Type: CODEPIPELINE
       Environment:

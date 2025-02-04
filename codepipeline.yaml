@@ -74,7 +74,7 @@ Resources:
               OutputArtifacts:
                 - Name: BuildOutput
               Configuration:
-                ProjectName: "sam-app-hello-custom-build"
+                ProjectName: !Ref CodeBuildProject
               RunOrder: 1
 
         - Name: Deploy
@@ -128,3 +128,20 @@ Resources:
                   Action:
                     - "iam:PassRole"
                   Resource: "*"
+
+
+
+  CodeBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: "sam-app-hello-custom-build"
+      ServiceRole: !GetAtt CodeBuildRole.Arn
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
+        Type: LINUX_CONTAINER
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: buildspec_feature.yml

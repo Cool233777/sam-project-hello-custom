@@ -32,7 +32,7 @@ Parameters:
   # TestingArtifactBucket:
   #   Type: String
   #   Default: "aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-rqd3axx84w38"
-CodeBuildServiceRole:
+  CodeBuildServiceRole:
     Type: AWS::IAM::Role
     Properties:
       Tags:

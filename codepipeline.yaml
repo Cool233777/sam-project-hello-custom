@@ -84,7 +84,7 @@ Resources:
           Actions:
             - Name: CodeDeploy
               ActionTypeId:
-                Category: Deploy
+                Category: Build
                 Owner: AWS
                 Provider: CodeBuild
                 Version: "1"
@@ -94,7 +94,7 @@ Resources:
                 ProjectName: !Ref CodeBuildProjectDeploy
                 EnvironmentVariables: !Sub |
                   [
-                    {"name": "ENV_TEMPLATE", "value": "template.yaml"},
+                    {"name": "ENV_TEMPLATE", "value": "packaged-test.yaml"},
                     {"name": "SAM_TEMPLATE", "value": "template.yaml"},
                     {"name": "ENV_REGION", "value": "${TestingRegion}"},
                     {"name": "ENV_STACK_NAME", "value": "${TestingStackName}"},

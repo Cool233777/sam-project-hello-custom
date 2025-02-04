@@ -27,6 +27,15 @@ Parameters:
   #   Type: String
   #   Default: "aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-rqd3axx84w38"
 
+CodeStarConnectionArn:
+  Type: String
+  Default: ""
+FeatureGitBranch:
+  Type: String
+  Default: ""
+
+Conditions:
+  CreateConnection: !Equals [!Ref CodeStarConnectionArn, ""]
 
 Resources:
   CodeStarConnection:
@@ -54,7 +63,7 @@ Resources:
                 Provider: CodeStarSourceConnection
                 Version: "1"
               Configuration:
-                ConnectionArn: !If [CreateConnection, "", ""]
+                ConnectionArn: !If [CreateConnection, !Ref CodeStarConnection, !Ref CodeStarConnectionArn]
                 FullRepositoryId: "cool233777/sam-project-hello-custom"
                 BranchName: "main"
               OutputArtifacts:

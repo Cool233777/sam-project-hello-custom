@@ -16,11 +16,11 @@ lint = true
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = false
-s3_bucket = "sam-app-hello-custom-artifacts"
+s3_bucket = "sam-app-hello-custom-1081718"
 
 [default.package.parameters]
 resolve_s3 = false
-s3_bucket = "sam-app-hello-custom-artifacts"
+s3_bucket = "sam-app-hello-custom-1081718"
 
 [default.sync.parameters]
 watch = true

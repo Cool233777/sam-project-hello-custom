@@ -202,19 +202,6 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
       ServiceRole: !GetAtt CodeBuildServiceRole.Arn
-      Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
-      PrivilegedMode: true
-      EnvironmentVariables:
-        - Name: SAM_TEMPLATE
-          Value: !Ref SamTemplate
-        - Name: TESTING_REGION
-          Value: !Ref TestingRegion
-        - Name: TESTING_PIPELINE_EXECUTION_ROLE
-          Value: !Ref TestingPipelineExecutionRole
-        - Name: TESTING_ARTIFACT_BUCKET
-          Value: !Ref TestingArtifactBucket
-        - Name: TESTING_IMAGE_REPOSITORY
-          Value: !Ref TestingImageRepository
       Source:
         Type: CODEPIPELINE
         BuildSpec: buildspec_deploy.yml

@@ -142,7 +142,7 @@ Resources:
   TestingArtifactBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: sam-app-hello-custom-artifacts-tests
+      BucketName: sam-app-hello-custom-artifacts-test
 
   TestingPipelineExecutionRole:
     Type: AWS::IAM::Role

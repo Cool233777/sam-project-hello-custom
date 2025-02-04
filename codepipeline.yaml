@@ -32,7 +32,7 @@ Parameters:
   # TestingArtifactBucket:
   #   Type: String
   #   Default: "aws-sam-cli-managed-dev-pipeline-r-artifactsbucket-rqd3axx84w38"
-odeBuildServiceRole:
+CodeBuildServiceRole:
     Type: AWS::IAM::Role
     Properties:
       Tags:
@@ -247,7 +247,7 @@ Resources:
         Type: LINUX_CONTAINER
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
-      ServiceRole: !GetAtt CodePipelineRole.Arn
+      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
         BuildSpec: buildspec_deploy.yml

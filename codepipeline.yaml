@@ -72,9 +72,11 @@ Resources:
               InputArtifacts:
                 - Name: BuildOutput
               Configuration:
-                 StackName: sam-app-hello-custom-stack  # El nombre del stack de CloudFormation
-                 Capabilities: CAPABILITY_IAM  # Si tu plantilla crea roles o permisos
-                 TemplatePath: BuildArtifact::.aws-sam/build/template.yaml  
+                 ApplicationName: "sam-app-hello-custom-deploy"
+                 DeploymentGroupName: "MiGrupoDeDespliegue"
+                 InputArtifacts:
+                  - Name: BuildArtifact
+                 RoleArn: !Sub "arn:aws:iam::${AWS::AccountId}:role/CodePipelineRole"
               RunOrder: 1
 
 

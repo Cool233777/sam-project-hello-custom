@@ -23,6 +23,9 @@ Parameters:
   CodeStarConnectionArn:
     Type: String
     Default: ""
+  TestingImageRepository:
+    Type: String
+    Default: ""
   # TestingPipelineExecutionRole:
   #   Type: String
   #   Default: "arn:aws:iam::038462753284:role/aws-sam-cli-managed-dev-pipel-PipelineExecutionRole-kjUnsYW3lwU5"

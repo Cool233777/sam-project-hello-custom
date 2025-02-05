@@ -192,7 +192,7 @@ Resources:
           - Name: TESTING_REGION
             Value: "us-east-1"
           - Name: TESTING_ARTIFACT_BUCKET
-            Value: "sam-app-hello-custom-artifacts-test"
+            Value: "sam-app-hello-custom-artifacts"
       Source:
         Type: CODEPIPELINE
         BuildSpec: buildspec.yml

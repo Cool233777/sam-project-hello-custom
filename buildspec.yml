@@ -19,6 +19,8 @@ phases:
                     --s3-bucket ${TESTING_ARTIFACT_BUCKET}
                     --region ${TESTING_REGION}
                     --capabilities CAPABILITY_IAM
+                    --no-fail-on-empty-changeset
+                    --no-confirm-changeset
 
 # artifacts:
 #   files:

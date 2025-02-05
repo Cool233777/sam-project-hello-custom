@@ -15,4 +15,5 @@ phases:
                     --s3-bucket ${ENV_BUCKET}
                     --no-fail-on-empty-changeset
                     --role-arn ${ENV_CLOUDFORMATION_EXECUTION_ROLE}
+                    --no-confirm-changeset
 

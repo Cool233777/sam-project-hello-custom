@@ -63,7 +63,7 @@ Resources:
                 Branch: "main"
                 OAuthToken: "{{resolve:secretsmanager:TokenDeMiGit}}"
               RunOrder: 1
-        - Name: Build and deploy
+        - Name: Build
           Actions:
             - Name: CodeBuild 
               ActionTypeId:

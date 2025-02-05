@@ -12,14 +12,14 @@ phases:
   build:
     commands:
       - sam build --use-container --template template.yaml
-      - . ./assume-role.sh ${TESTING_PIPELINE_EXECUTION_ROLE} test-package
       - sam package --s3-bucket ${TESTING_ARTIFACT_BUCKET}
                     --region ${TESTING_REGION}
-                    --output-template-file packaged-test.yaml
+                    --output-template-file packaged-template.yaml
+      - sam deploy --stack-name ${STACK_NAME}
+                    --s3-bucket ${TESTING_ARTIFACT_BUCKET}
+                    --region ${TESTING_REGION}
+                    --capabilities CAPABILITY_IAM
 
-artifacts:
-  files:
-     - packaged-test.yaml
-secondary-artifacts:
-  - assume-role.sh
-  - pipeline/*
+# artifacts:
+#   files:
+#      - packaged-template.yaml

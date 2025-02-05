@@ -58,7 +58,7 @@ Resources:
               OutputArtifacts:
                 - Name: SourceOutput
               Configuration:
-                Owner: "Cool233777"
+                Owner: "cool233777"
                 Repo: "sam-project-hello-custom"
                 Branch: "main"
                 OAuthToken: "{{resolve:secretsmanager:TokenDeMiGit}}"

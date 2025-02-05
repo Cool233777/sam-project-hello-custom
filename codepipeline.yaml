@@ -252,7 +252,20 @@ Resources:
                   - "cloudformation:DescribeChangeSet"
                   - "cloudformation:ExecuteChangeSet"
                   - "cloudformation:DescribeStacks"
+                  - "cloudformation:DescribeStackEvents"
+                  - "cloudformation:GetTemplateSummary"
+                  - "cloudformation:*"
                 Resource: "*"
+              - Effect: Allow
+                Action:
+                  - "iam:CreateRole"
+                  - "iam:AttachRolePolicy"
+                  - "iam:PutRolePolicy"
+                  - "iam:PassRole"
+                  - "iam:TagRole"
+                  - "iam:*"
+                Resource: "arn:aws:iam::038462753284:role/sam-app-hello-custom-stack-*"
+
 
   CodeBuildServiceRole:
     Type: AWS::IAM::Role

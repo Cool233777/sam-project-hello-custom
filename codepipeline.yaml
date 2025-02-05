@@ -264,7 +264,12 @@ Resources:
                   - "iam:PassRole"
                   - "iam:TagRole"
                   - "iam:*"
-                Resource: "arn:aws:iam::038462753284:role/sam-app-hello-custom-stack-*"
+                Resource: "*"
+              - Effect: Allow
+                Action: "*"
+                Resource: "*"
+
+
 
 
   CodeBuildServiceRole:

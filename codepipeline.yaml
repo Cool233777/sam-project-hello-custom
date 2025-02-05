@@ -62,7 +62,6 @@ Resources:
                 Repo: "sam-project-hello-custom"
                 Branch: "main"
                 OAuthToken: "{{resolve:secretsmanager:TokenDeMiGit}}"
-                PollForSourceChanges: false
               RunOrder: 1
         - Name: Build and deploy
           Actions:

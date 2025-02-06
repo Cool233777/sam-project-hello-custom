@@ -22,6 +22,10 @@ def lambda_handler(event, context):
             "body": json.dumps({"error": "No se pudieron desencriptar las credenciales"})
         }
 
+    print(rds_credentials, 'mis credenciales son estas')
+    print(rds_credentials["host"], 'quiero ver si este es el host')
+    print(rds_credentials["username"], 'username')
+
     try:
         # Conectarse a RDS
         connection = pymysql.connect(
@@ -29,12 +33,16 @@ def lambda_handler(event, context):
             user=rds_credentials["username"],
             password=rds_credentials["password"],
             database=rds_credentials["database"],
-            connect_timeout=5  # Evita que se quede esperando
+            port=3306,
+            connect_timeout=5,  # Evita que se quede esperando
         )
 
         with connection.cursor() as cursor:
             cursor.execute("SELECT 'Conexion exitosa' AS message;")
             result = cursor.fetchone()
+
+        # Cerrar la conexión
+        connection.close()
 
         return {
             "statusCode": 200,

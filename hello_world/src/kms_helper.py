@@ -1,8 +1,9 @@
 import boto3
 import base64
 import json
+import os
 
-KMS_KEY_ID = "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
+KMS_KEY_ID = os.getenv("KMS_KEY_ARN")
 
 kms_client = boto3.client("kms")
 

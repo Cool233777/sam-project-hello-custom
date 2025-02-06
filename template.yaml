@@ -29,6 +29,30 @@ Resources:
             Path: /hello
             Method: get
 
+  RDSConnectionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: rds_connect.lambda_handler
+      Runtime: python3.13
+      CodeUri: hello_world/src/
+      Environment:
+        Variables:
+          ENCRYPTED_RDS_CREDENTIALS: "AQICAHj+liaqPgt0r3m0w56wvwx5sdne9GFt1aRMYWBdmnc8swHL7VhXlMn7My+poLReidFMAAABBTCCAQEGCSqGSIb3DQEHBqCB8zCB8AIBADCB6gYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAwWtItN0UrwWXCUIXcCARCAgbzWYe5qOKbjy+mtnA6yM1rY1AV4QuqO2aHm0nx094qSyE+3UpmLsUd1+k2r7BXEoKta8NxFXGsjF/zpMcss/ptULykOZ2cxYw+8MycJnlPPlV3cvUWlv2Rt9+pCy4YAPT5k+GslYDkOQGA4/VI+DoZ7SMsyatJtdofgIrYXVZ2dtryIUvlMxhU5GxLqUD8RWEg08WoDlvpnNlGLbHxpF0CPRkgvrEL09tB+J0xdPDXvsALHHzHzARXzSxbvdA=="
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSXRayDaemonWriteAccess
+        - Statement:
+            - Effect: Allow
+              Action:
+                - kms:Decrypt
+              Resource: "arn:aws:rds:us-east-1:038462753284:db:rds-test-identifier"
+      Events:
+        RDSAPI:
+          Type: Api
+          Properties:
+            Path: /rds
+            Method: get
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM

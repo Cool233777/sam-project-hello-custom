@@ -9,32 +9,20 @@ kms_client = boto3.client("kms")
 
 def decrypt_rds_credentials(encrypted_credentials):
     try:
-        # print(f"Encrypted Credentials: {encrypted_credentials[:50]}...")  # Solo imprime los primeros 50 caracteres
-        # # 🚀 INTENTA PRIMERO SIN Base64 Decode
-        # decrypted = kms_client.decrypt(
-        #     CiphertextBlob=encrypted_credentials  # Directamente sin decodificar
-        # )
+        # Detectar si ya está en Base64
+        if isinstance(encrypted_credentials, str):
+            print(f"🔍 Input antes de decodificar: {encrypted_credentials[:50]}...")  # Solo muestra los primeros 50 caracteres
+            encrypted_credentials = base64.b64decode(encrypted_credentials)
 
-        # # Decodificar los datos desencriptados
-        # plaintext = decrypted['Plaintext'].decode('utf-8')
-        # print(f"Decrypted JSON: {plaintext}")
-
-        # # decrypted = kms_client.decrypt(
-        # #     CiphertextBlob=base64.b64decode(encrypted_credentials)
-        # # )
-        # # return json.loads(decrypted['Plaintext'].decode('utf-8'))
-        # return json.loads(plaintext)
-        # Detectar si es Base64
-        try:
-            decoded_blob = base64.b64decode(encrypted_credentials)
-        except Exception:
-            decoded_blob = encrypted_credentials  # Si falla, es que ya está en binario
-        
+        # Desencriptar con KMS
         decrypted = kms_client.decrypt(
-            CiphertextBlob=decoded_blob
+            CiphertextBlob=encrypted_credentials
         )
 
-        return json.loads(decrypted['Plaintext'].decode('utf-8'))
+        plaintext = decrypted['Plaintext'].decode('utf-8')
+        print(f"🔓 Datos desencriptados: {plaintext}")  # 🚀 Esto debería ser JSON con credenciales
+
+        return json.loads(plaintext)
     except Exception as e:
         print(f"Error al desencriptar: {str(e)}")
         return None

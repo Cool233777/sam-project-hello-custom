@@ -9,10 +9,21 @@ kms_client = boto3.client("kms")
 
 def decrypt_rds_credentials(encrypted_credentials):
     try:
+        print(f"Encrypted Credentials: {encrypted_credentials[:50]}...")  # Solo imprime los primeros 50 caracteres
+        # 🚀 INTENTA PRIMERO SIN Base64 Decode
         decrypted = kms_client.decrypt(
-            CiphertextBlob=base64.b64decode(encrypted_credentials)
+            CiphertextBlob=encrypted_credentials  # Directamente sin decodificar
         )
-        return json.loads(decrypted['Plaintext'].decode('utf-8'))
+
+        # Decodificar los datos desencriptados
+        plaintext = decrypted['Plaintext'].decode('utf-8')
+        print(f"Decrypted JSON: {plaintext}")
+
+        # decrypted = kms_client.decrypt(
+        #     CiphertextBlob=base64.b64decode(encrypted_credentials)
+        # )
+        # return json.loads(decrypted['Plaintext'].decode('utf-8'))
+        return json.loads(plaintext)
     except Exception as e:
         print(f"Error al desencriptar: {str(e)}")
         return None

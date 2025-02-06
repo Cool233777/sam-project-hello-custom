@@ -46,7 +46,7 @@ Resources:
             - Effect: Allow
               Action:
                 - kms:Decrypt
-              Resource: "arn:aws:rds:us-east-1:038462753284:db:rds-test-identifier"
+              Resource: "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
       Events:
         RDSAPI:
           Type: Api

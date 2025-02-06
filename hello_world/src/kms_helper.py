@@ -11,7 +11,7 @@ def decrypt_rds_credentials(encrypted_credentials):
     try:
         #Detectar si ya está en Base64
         if isinstance(encrypted_credentials, str):
-            print(f"🔍 Input antes de decodificar: {encrypted_credentials[:50]}...")  
+            print(f"Input antes de decodificar: {encrypted_credentials[:50]}...")  
             encrypted_credentials = base64.b64decode(encrypted_credentials)
 
         #Primera desencripción: AWS KMS

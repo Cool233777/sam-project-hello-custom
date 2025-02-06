@@ -39,6 +39,7 @@ Resources:
         Variables:
           ENCRYPTED_RDS_CREDENTIALS: "AQICAHj+liaqPgt0r3m0w56wvwx5sdne9GFt1aRMYWBdmnc8swHL7VhXlMn7My+poLReidFMAAABBTCCAQEGCSqGSIb3DQEHBqCB8zCB8AIBADCB6gYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAwWtItN0UrwWXCUIXcCARCAgbzWYe5qOKbjy+mtnA6yM1rY1AV4QuqO2aHm0nx094qSyE+3UpmLsUd1+k2r7BXEoKta8NxFXGsjF/zpMcss/ptULykOZ2cxYw+8MycJnlPPlV3cvUWlv2Rt9+pCy4YAPT5k+GslYDkOQGA4/VI+DoZ7SMsyatJtdofgIrYXVZ2dtryIUvlMxhU5GxLqUD8RWEg08WoDlvpnNlGLbHxpF0CPRkgvrEL09tB+J0xdPDXvsALHHzHzARXzSxbvdA=="
           KMS_KEY_ARN: "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
+      Timeout: 30
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSXRayDaemonWriteAccess

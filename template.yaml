@@ -50,7 +50,8 @@ Resources:
           - subnet-05959e72acd6f038f
         SecurityGroupIds:
           - sg-09f6904876f01545b
-          #- sg-09335b86ed90e9083
+          - sg-09335b86ed90e9083
+          - sg-0401dffe58ec6bca9
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSXRayDaemonWriteAccess

@@ -2,9 +2,13 @@ import pymysql
 import os
 import json
 from kms_helper import decrypt_rds_credentials
+import logging
 
 # Credenciales cifradas (las pegamos aquí o las tomamos de una variable de entorno)
 ENCRYPTED_CREDENTIALS = os.getenv("ENCRYPTED_RDS_CREDENTIALS")
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
     if not ENCRYPTED_CREDENTIALS:
@@ -21,10 +25,8 @@ def lambda_handler(event, context):
             "statusCode": 500,
             "body": json.dumps({"error": "No se pudieron desencriptar las credenciales"})
         }
-
-    print(rds_credentials, 'mis credenciales son estas')
-    print(rds_credentials["host"], 'quiero ver si este es el host')
-    print(rds_credentials["username"], 'username')
+    # Loguear las credenciales (Asegúrate de no loguear las contraseñas en entornos de producción)
+    logger.info(f"Conectando a RDS con host: {rds_credentials["host"]}, usuario: {rds_credentials["username"]}, base de datos: {rds_credentials["database"]}")
 
     try:
         # Conectarse a RDS
@@ -50,6 +52,7 @@ def lambda_handler(event, context):
         }
 
     except Exception as e:
+        logger.error(f"Error al conectarse a la base de datos: {str(e)}")
         return {
             "statusCode": 500,
             "body": json.dumps({"error": f"Error en la conexión a RDS: {str(e)}"})

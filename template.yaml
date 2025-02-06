@@ -40,6 +40,16 @@ Resources:
           ENCRYPTED_RDS_CREDENTIALS: "AQICAHj+liaqPgt0r3m0w56wvwx5sdne9GFt1aRMYWBdmnc8swHL7VhXlMn7My+poLReidFMAAABBTCCAQEGCSqGSIb3DQEHBqCB8zCB8AIBADCB6gYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAwWtItN0UrwWXCUIXcCARCAgbzWYe5qOKbjy+mtnA6yM1rY1AV4QuqO2aHm0nx094qSyE+3UpmLsUd1+k2r7BXEoKta8NxFXGsjF/zpMcss/ptULykOZ2cxYw+8MycJnlPPlV3cvUWlv2Rt9+pCy4YAPT5k+GslYDkOQGA4/VI+DoZ7SMsyatJtdofgIrYXVZ2dtryIUvlMxhU5GxLqUD8RWEg08WoDlvpnNlGLbHxpF0CPRkgvrEL09tB+J0xdPDXvsALHHzHzARXzSxbvdA=="
           KMS_KEY_ARN: "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
       Timeout: 30
+      VpcConfig:
+        SubnetIds:
+          - subnet-0489ad25a0190cb33
+          - subnet-0685b5b91da395f24
+          - subnet-0f75b0df849c129a5
+          - subnet-0d5602d623280bbae
+          - subnet-0f97e89ecb8a78721
+          - subnet-05959e72acd6f038f
+        SecurityGroupIds:
+          - sg-052f803118ffdaf93
       Policies:
         - AWSLambdaBasicExecutionRole
         - AWSXRayDaemonWriteAccess

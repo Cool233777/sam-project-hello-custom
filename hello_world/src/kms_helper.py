@@ -31,3 +31,17 @@ def decrypt_rds_credentials(encrypted_credentials):
     except Exception as e:
         print(f"Error al desencriptar: {str(e)}")
         return None
+    
+
+def encrypt_password(password):
+    response = kms_client.encrypt(
+        KeyId=KMS_KEY_ID,
+        Plaintext=password.encode("utf-8")
+    )
+    return base64.b64encode(response["CiphertextBlob"]).decode("utf-8")
+
+def decrypt_password(encrypted_password):
+    response = kms_client.decrypt(
+        CiphertextBlob=base64.b64decode(encrypted_password)
+    )
+    return response["Plaintext"].decode("utf-8")

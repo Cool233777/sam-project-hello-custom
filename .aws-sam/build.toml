@@ -14,7 +14,7 @@ codeuri = "/home/cristianazurdia/sam-app-hello-custom"
 runtime = "nodejs22.x"
 architecture = "x86_64"
 handler = "hello_world/src/index.handler"
-manifest_hash = "4b91031a24f31512b8ff32c0adb34615"
+manifest_hash = "479ab8ee5122f30dff8963102f926244"
 packagetype = "Zip"
 functions = ["RDSConnectionFunction"]
 

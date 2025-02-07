@@ -1,9 +1,8 @@
-import { log } from 'console';
-import { Client } from 'pg';
+import pg from 'pg';
 
 export function getClient() {
 
-	return new Client({
+	return new pg.Client({
         database: process.env.DB_NAME,
         host: process.env.DB_HOST,
         port: parseInt(process.env.DB_PORT),

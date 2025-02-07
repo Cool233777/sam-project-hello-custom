@@ -9,6 +9,7 @@
     "author": "me",
     "license": "ISC",
     "dependencies": {
+        "@aws-sdk/client-secrets-manager": "^3.744.0",
         "pg": "^8.13.1",
         "pg-format": "^1.0.4"
     }

@@ -1,5 +1,6 @@
 import { getClient, transaction } from "./db-client.mjs";
 import format from "pg-format";
+import { secretManager } from "./secret-manager.mjs";
 
 const SCHEMA = "public";
 const TABLE = "factura";
@@ -20,6 +21,11 @@ const TABLE = "factura";
 
 export const handler = async (event, context) => {
   // TODO implement
+
+  console.log("a ver si peta antes del secret manager");
+  const dbcredentialsResult = await secretManager();
+  console.log("dbcredentialsResult", dbcredentialsResult);
+
   if (event.httpMethod !== "GET") {
     throw new Error(
       `getMethod only accept GET method, you tried: ${event.httpMethod}`

@@ -70,13 +70,14 @@ Resources:
         #         - secretsmanager:GetSecretValue
         #       Resource: "arn:aws:secretsmanager:us-east-1:038462753284:secret:rds!cluster-d4e68faa-8976-4163-878e-b4966ab2daa8-7F2q13"
         - AWSSecretsManagerGetSecretValuePolicy:
-            SecretArn: "arn:aws:secretsmanager:us-east-1:038462753284:secret:rds!cluster-d4e68faa-8976-4163-878e-b4966ab2daa8-7F2q13"
+            SecretArn: "arn:aws:secretsmanager:us-east-1:038462753284:secret:conexion/rds/a/chejo-9Cm8Vm"
       Events:
         RDSAPI:
           Type: Api
           Properties:
             Path: /rds
             Method: get
+    
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

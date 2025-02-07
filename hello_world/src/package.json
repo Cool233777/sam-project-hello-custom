@@ -4,12 +4,12 @@
     "description": "try pg-lambda",
     "main": "index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "me",
     "license": "ISC",
     "dependencies": {
-      "pg": "^8.13.1"
+        "pg": "^8.13.1",
+        "pg-format": "^1.0.4"
     }
-  }
-  
+}

@@ -59,6 +59,13 @@ Resources:
               Action:
                 - kms:Decrypt
               Resource: "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
+        # - Statement:
+        #     - Effect: Allow
+        #       Action:
+        #         - secretsmanager:GetSecretValue
+        #       Resource: "arn:aws:secretsmanager:us-east-1:038462753284:secret:rds!cluster-d4e68faa-8976-4163-878e-b4966ab2daa8-7F2q13"
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: "arn:aws:secretsmanager:us-east-1:038462753284:secret:rds!cluster-d4e68faa-8976-4163-878e-b4966ab2daa8-7F2q13"
       Events:
         RDSAPI:
           Type: Api

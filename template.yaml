@@ -68,6 +68,8 @@ Resources:
             - Effect: Allow
               Action:
                 - secretsmanager:GetSecretValue
+                - secretsmanager:DescribeSecret
+                - secretsmanager:ListSecrets
               Resource: "arn:aws:secretsmanager:us-east-1:038462753284:secret:conexion/rds/a/chejo-9Cm8Vm"
         #- AWSSecretsManagerGetSecretValuePolicy:
          #   SecretArn: "arn:aws:secretsmanager:us-east-1:038462753284:secret:conexion/rds/a/chejo-9Cm8Vm"

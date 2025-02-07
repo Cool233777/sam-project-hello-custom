@@ -9,11 +9,11 @@ manifest_hash = "3298f13049d19cffaa37ca931dd4d421"
 packagetype = "Zip"
 functions = ["HelloWorldFunction"]
 
-[function_build_definitions.bc366b66-f5df-4877-8800-607705a21799]
-codeuri = "/home/cristianazurdia/sam-app-hello-custom/hello_world/src"
-runtime = "python3.13"
+[function_build_definitions.6db77ada-2aa8-4ce8-9c9f-caae272c0db8]
+codeuri = "/home/cristianazurdia/sam-app-hello-custom"
+runtime = "nodejs22.x"
 architecture = "x86_64"
-handler = "rds_connect.lambda_handler"
+handler = "hello_world/src/index.handler"
 manifest_hash = ""
 packagetype = "Zip"
 functions = ["RDSConnectionFunction"]

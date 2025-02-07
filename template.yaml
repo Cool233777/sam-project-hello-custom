@@ -32,13 +32,18 @@ Resources:
   RDSConnectionFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: rds_connect.lambda_handler
-      Runtime: python3.13
-      CodeUri: hello_world/src/
+      Handler: hello_world/src/index.handler
+      Runtime: nodejs22.x
+      #CodeUri: hello_world/src/
       Environment:
         Variables:
-          ENCRYPTED_RDS_CREDENTIALS: "AQICAHj+liaqPgt0r3m0w56wvwx5sdne9GFt1aRMYWBdmnc8swFAbLOzAS2d/S09eWFGf4e+AAAAszCBsAYJKoZIhvcNAQcGoIGiMIGfAgEAMIGZBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDKMQyjhAxkqxV8yOkAIBEIBsJACRh3H1JJQ9DS0pFFn3a5Lr0m9jBmJXo+yAn98dSiEC48Dp/BgPLdrOr1HpL4LCdhbv7VOVGWUDfupPTr6nGLoFAHSlpaWPAm2gblq2kHXuzoAmshljzg4J0EJ5WN6sFmg6dEYbRAtmuxJL"
-          KMS_KEY_ARN: "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
+          # ENCRYPTED_RDS_CREDENTIALS: "AQICAHj+liaqPgt0r3m0w56wvwx5sdne9GFt1aRMYWBdmnc8swFAbLOzAS2d/S09eWFGf4e+AAAAszCBsAYJKoZIhvcNAQcGoIGiMIGfAgEAMIGZBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDKMQyjhAxkqxV8yOkAIBEIBsJACRh3H1JJQ9DS0pFFn3a5Lr0m9jBmJXo+yAn98dSiEC48Dp/BgPLdrOr1HpL4LCdhbv7VOVGWUDfupPTr6nGLoFAHSlpaWPAm2gblq2kHXuzoAmshljzg4J0EJ5WN6sFmg6dEYbRAtmuxJL"
+          # KMS_KEY_ARN: "arn:aws:kms:us-east-1:038462753284:key/e7f712a6-2273-4cfb-a97b-e5eac6d64c68"
+          DB_NAME: "postgres"
+          DB_HOST: "database-8.cheegk0mkqim.us-east-2.rds.amazonaws.com"
+          DB_PORT: "5432"
+          DB_USER: "postgres"
+          DB_PASSWORD: "Prueba1234"
       VpcConfig:
         SubnetIds:
           - subnet-0489ad25a0190cb33
